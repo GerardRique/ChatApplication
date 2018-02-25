@@ -26,6 +26,9 @@ export class AppComponent {
 
   loggedIn: boolean;
 
+  currentUsername: string = '';
+  currentEmail: string = '';
+
   constructor(private clientService: ClientService, private zone: NgZone){
 
     this.loggedIn = false;
@@ -61,9 +64,7 @@ export class AppComponent {
       }
     })
 
-    let user = new User('Gerard Rique', 'grique25@gmail.com');
-
-    clientService.sendSignInRequest(user);
+    
   }
 
   public selectUser(user): void{
@@ -74,5 +75,13 @@ export class AppComponent {
   public sendMessage(): void{
     console.log('Sending message...');
     this.clientService.sendMessage(this.messageContent, this.selectedChatUser['ipAdress'], this.selectedChatUser['portNumber']);
+  }
+
+  public LogIn(){
+    let user = new User(this.currentUsername, this.currentEmail);
+
+    this.clientService.sendSignInRequest(user);
+
+    this.loggedIn = true;
   }
 }

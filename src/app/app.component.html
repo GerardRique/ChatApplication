@@ -1,6 +1,19 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-<mat-grid-list cols="2" rowHeight="2:1">
+<form *ngIf="loggedIn === false">
+    <mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="currentUserName" name="username" placeholder="Enter username">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="currentEmail" name="email" placeholder="Enter Email">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="LogIn()">Log In</button>
+</form>
+
+
+<mat-grid-list cols="2" rowHeight="2:1" *ngIf="loggedIn === true">
   <h3>Online users</h3>
   <mat-grid-tile>
     <!-- <ul>
@@ -16,10 +29,7 @@
         <h4 mat-line>Gerard Rique</h4>
       </mat-list-item>
       <mat-list-item>
-        <h4 mat-line>Gerard Rique</h4>
-      </mat-list-item>
-      <mat-list-item>
-        <h4 mat-line>Gerard Rique</h4>
+        <h4 mat-line>Jerome Rique</h4>
       </mat-list-item>
     </mat-list> -->
     
@@ -29,7 +39,7 @@
 
     <form class="example-form">
       <mat-form-field class="example-full-width">
-        <input matInput [(ngModel)]="messageContent" name="message" placeholder="Favorite food" value="Sushi">
+        <input matInput [(ngModel)]="messageContent" name="message" placeholder="Enter message" value="Sushi">
       </mat-form-field>
     </form>
     <button mat-raised-button color="primary" (click)="sendMessage()">Send</button>
