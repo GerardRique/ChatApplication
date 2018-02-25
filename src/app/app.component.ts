@@ -6,6 +6,7 @@ import { User } from '../core/User';
 import { Packet } from '../core/Packet';
 import { Message } from '../core/Message';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -23,7 +24,11 @@ export class AppComponent {
 
   messageContent: string;
 
+  loggedIn: boolean;
+
   constructor(private clientService: ClientService, private zone: NgZone){
+
+    this.loggedIn = false;
 
     this.userList = [];
 

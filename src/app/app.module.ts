@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { NgxElectronModule } from 'ngx-electron';
 import { ClientService } from '../core/clientService';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     NgxElectronModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [
     ClientService

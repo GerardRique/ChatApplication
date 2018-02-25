@@ -1,16 +1,38 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li *ngFor="let current of userList"><button (click)="selectUser(current)">{{current.user.username}}</button></li>
-</ul>
 
-<p>{{receivedMessageContent}}</p>
-<input type="text" [(ngModel)]="messageContent" placeholder="Enter Message"/>
-<button type="submit" (click)="sendMessage()">Send</button>
+<mat-grid-list cols="2" rowHeight="2:1">
+  <h3>Online users</h3>
+  <mat-grid-tile>
+    <!-- <ul>
+      <li *ngFor="let current of userList"><button (click)="selectUser(current)">{{current.user.username}}</button></li>
+    </ul> -->
+
+    <mat-list>
+      <mat-list-item *ngFor="let current of userList" (click)="selectUser(current)">{{current.user.username}}</mat-list-item>
+    </mat-list>
+
+    <!-- <mat-list role="list">
+      <mat-list-item>
+        <h4 mat-line>Gerard Rique</h4>
+      </mat-list-item>
+      <mat-list-item>
+        <h4 mat-line>Gerard Rique</h4>
+      </mat-list-item>
+      <mat-list-item>
+        <h4 mat-line>Gerard Rique</h4>
+      </mat-list-item>
+    </mat-list> -->
+    
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <p>{{receivedMessageContent}}</p>
+
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput [(ngModel)]="messageContent" name="message" placeholder="Favorite food" value="Sushi">
+      </mat-form-field>
+    </form>
+    <button mat-raised-button color="primary" (click)="sendMessage()">Send</button>
+  </mat-grid-tile>
+</mat-grid-list>
 
