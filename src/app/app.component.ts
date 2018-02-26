@@ -40,6 +40,8 @@ export class AppComponent {
     clientService.getClient().on('message', (message, remote) => {
       console.log('Received from => ' + remote.address + ': ' + remote.port);
 
+      console.log(message);
+
       //Convert response from server from byte array to string
       let responseString = String.fromCharCode.apply(String, message);
 
@@ -66,8 +68,20 @@ export class AppComponent {
         console.log(this.userList);
 
       }
-    })
 
+      else if(response.type.localeCompare(Packet.MESSAGE) === 0){
+        console.log('Received message');
+
+        let messageString = response.payload;
+
+        let message = JSON.parse(messageString);
+
+
+        this.zone.run(() => {
+          this.receivedMessageContent = message.messageContent;
+        })
+      }
+    })
     
   }
 
