@@ -2,7 +2,7 @@
 
 <form *ngIf="loggedIn === false">
     <mat-form-field class="example-full-width">
-      <input matInput [(ngModel)]="currentUserName" name="username" placeholder="Enter username">
+      <input matInput [(ngModel)]="currentUsername" name="username" placeholder="Enter username">
     </mat-form-field>
 
     <mat-form-field>
@@ -16,13 +16,13 @@
 <mat-grid-list cols="2" rowHeight="2:1" *ngIf="loggedIn === true">
   <h3>Online users</h3>
   <mat-grid-tile>
-    <!-- <ul>
+    <ul>
       <li *ngFor="let current of userList"><button (click)="selectUser(current)">{{current.user.username}}</button></li>
-    </ul> -->
+    </ul>
 
-    <mat-list>
+    <!-- <mat-list>
       <mat-list-item *ngFor="let current of userList" (click)="selectUser(current)">{{current.user.username}}</mat-list-item>
-    </mat-list>
+    </mat-list> -->
 
     <!-- <mat-list role="list">
       <mat-list-item>

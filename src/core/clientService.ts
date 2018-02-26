@@ -12,7 +12,7 @@ export class ClientService{
 
     constructor(){
         this.port = 41234;
-        this.host = '192.168.1.16';
+        this.host = '192.168.1.11';
     }
 
     public getClient(): any{

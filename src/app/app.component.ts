@@ -52,6 +52,8 @@ export class AppComponent {
 
         let receivedUserList = JSON.parse(userListString);
 
+        this.userList = [];
+
 
         for(let currentUser of receivedUserList){
           
@@ -60,6 +62,8 @@ export class AppComponent {
           })
           
         }
+
+        console.log(this.userList);
 
       }
     })
