@@ -34,6 +34,10 @@ export class AppComponent {
     this.loggedIn = false;
 
     this.userList = [];
+    this.selectedChatUser = {
+      name: '',
+      email: ''
+    }
 
     this.receivedMessageContent = '';
     

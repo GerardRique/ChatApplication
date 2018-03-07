@@ -1,3 +1,35 @@
-mat-grid-tile {
+/* mat-grid-tile {
     background: lightblue;
+} */
+
+
+.log-in-form{
+    border: 1px solid black;
+    background-color: white;
+    padding: 15px;
+    box-shadow: 5px 10px 8px #888888;
+}
+
+.my-input{
+    font-size: 20px;
+    width:400px !important;
+}
+
+.log-in-page{
+    background-color: #673AB7;
+}
+
+.log-in-heading{
+    text-align: center;
+}
+.myListItem{
+    list-style-type: none;
+}
+
+.chat-container{
+    background-color: #673AB7;
+}
+
+.white-font{
+    color: white;
 }

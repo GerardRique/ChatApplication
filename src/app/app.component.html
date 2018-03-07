@@ -1,26 +1,92 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<div class="log-in-page" *ngIf="loggedIn === false">
+  <mat-grid-list cols="3">
+    <mat-grid-tile></mat-grid-tile>
 
-<form *ngIf="loggedIn === false">
-    <mat-form-field class="example-full-width">
-      <input matInput [(ngModel)]="currentUsername" name="username" placeholder="Enter username">
-    </mat-form-field>
+    <mat-grid-tile>
+      <form class="log-in-form">
+        <div><h1 class="log-in-heading mat-typography">Log In</h1></div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <input class="myInput" matInput [(ngModel)]="currentUsername" name="username" placeholder="Enter username">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input class="myInput" matInput [(ngModel)]="currentEmail" name="email" placeholder="Enter Email">
+          </mat-form-field>
+        </div>
+    
+        <button mat-raised-button color="primary" (click)="LogIn()">Log In</button>
+      </form>
+    </mat-grid-tile>
+  </mat-grid-list>
+  
+</div>
 
-    <mat-form-field>
-      <input matInput [(ngModel)]="currentEmail" name="email" placeholder="Enter Email">
-    </mat-form-field>
+<div class="chat-container" *ngIf="loggedIn === true">
+  <mat-grid-list cols="3">
+    <mat-grid-tile [colspan]="1">
+      <!-- <ul>
+          <li *ngFor="let current of userList" class="myListItem"><button (click)="selectUser(current)">{{current.user.username}}</button></li>
+          <li class="myListItem"><button (click)="selectUser(current)">Alliyah Lalgee</button></li>
+        <li class="myListItem"><button (click)="selectUser(current)">Jerome Rique</button></li>
+        <li class="myListItem"><button (click)="selectUser(current)">John Timothy</button></li>
+      </ul> -->
 
-    <button mat-raised-button color="primary" (click)="LogIn()">Log In</button>
-</form>
+      <mat-list>
+          <h1 mat-subheader>Online users</h1>
+          <h2 *ngIf="userList.length === 0" class="mat-typography white-font">No users currently online</h2>
+          <mat-list-item *ngFor="let current of userList" (click)="selectUser(current)">
+            <mat-icon class=" white-font" mat-list-icon>person</mat-icon>
+            <h4 class=" white-font" mat-line>{{current.user.username}}</h4>
+          </mat-list-item>
+        </mat-list>
+
+    </mat-grid-tile> 
+    <mat-grid-tile [colspan]="2">
+      <mat-list>
+        <mat-list-item>
+            <h1 class="mat-typography white-font" *ngIf="selectedChatUser.name === ''">Select user to begin</h1>
+        </mat-list-item>
+        <mat-list-item>
+          <h1 class="mat-typography white-font">{{selectedChatUser.name}}</h1>
+        </mat-list-item>
+        <mat-list-item>
+          <p class="incoming-message white-font">{{receivedMessageContent}}</p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <input matInput class="white-font" [(ngModel)]="messageContent" name="message" placeholder="Enter message" value="Sushi">
+            </mat-form-field>
+          </form>
+        </mat-list-item>
+
+        <mat-list-item>
+          <button mat-raised-button color="primary" (click)="sendMessage()">Send</button>
+        </mat-list-item>
+      </mat-list>
+
+      
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
 
 
-<mat-grid-list cols="2" rowHeight="2:1" *ngIf="loggedIn === true">
+<!-- <mat-grid-list cols="2" rowHeight="2:1" *ngIf="loggedIn === true">
   <h3>Online users</h3>
   <mat-grid-tile>
     <ul>
-      <li *ngFor="let current of userList"><button (click)="selectUser(current)">{{current.user.username}}</button></li>
+      <li *ngFor="let current of userList" class="myListItem"><button (click)="selectUser(current)">{{current.user.username}}</button></li>
+
+      <li class="myListItem"><button (click)="selectUser(current)">Alliyah Lalgee</button></li>
+      <li class="myListItem"><button (click)="selectUser(current)">Jerome Rique</button></li>
+      <li class="myListItem"><button (click)="selectUser(current)">John Timothy</button></li>
     </ul>
 
-    <!-- <mat-list>
+     <mat-list>
       <mat-list-item *ngFor="let current of userList" (click)="selectUser(current)">{{current.user.username}}</mat-list-item>
     </mat-list> -->
 
@@ -33,7 +99,7 @@
       </mat-list-item>
     </mat-list> -->
     
-  </mat-grid-tile>
+  <!-- </mat-grid-tile>
   <mat-grid-tile>
     <p>{{receivedMessageContent}}</p>
 
@@ -44,5 +110,5 @@
     </form>
     <button mat-raised-button color="primary" (click)="sendMessage()">Send</button>
   </mat-grid-tile>
-</mat-grid-list>
+</mat-grid-list> -->
 
